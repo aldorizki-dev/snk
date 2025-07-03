@@ -1,6 +1,10 @@
 name: main
 
-on: [push]
+on:
+  schedule:
+    - cron: "0 0 * * *" # setiap hari tengah malam UTC
+  workflow_dispatch:
+
 
 jobs:
   test:
@@ -31,7 +35,7 @@ jobs:
         id: generate-snake
         uses: ./
         with:
-          github_user_name: platane
+          github_user_name: aldorizki-dev
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
